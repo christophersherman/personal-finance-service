@@ -1,29 +1,44 @@
 package com.sherm.pfinance.controllers;
 
+import com.sherm.pfinance.models.Accounts;
+import com.sherm.pfinance.services.AccountsService;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.sherm.pfinance.models.Accounts;
-import com.sherm.pfinance.repositories.AccountsRepository;
-
 @RestController
+@RequestMapping("/api/accounts")
 public class AccountsController {
 
-    @Autowired
-    private AccountsRepository accountsRepository;
+    private final AccountsService accountService;
 
-    @GetMapping("/accounts")
-    public List<Accounts> getAllAccounts() {
-        return accountsRepository.findAll();
+    public AccountsController(AccountsService accountService) {
+        this.accountService = accountService;
     }
 
-    @PostMapping("/accounts")
+    @GetMapping
+    public List<Accounts> getAllAccounts() {
+        return accountService.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Accounts getAccountById(@PathVariable Long id) {
+        return accountService.findById(id);
+    }
+
+    @PostMapping
     public Accounts createAccount(@RequestBody Accounts account) {
-        return accountsRepository.save(account);
+        return accountService.save(account);
+    }
+
+    @PutMapping("/{id}")
+    public Accounts updateAccount(@PathVariable Long id, @RequestBody Accounts account) {
+        account.setId(id);
+        return accountService.save(account);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteAccount(@PathVariable Long id) {
+        accountService.deleteById(id);
     }
 }
