@@ -21,10 +21,18 @@ public class Transactions {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long transaction_id;
 
-    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private Users user; 
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Categories category;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "account_id")
+    private Accounts account;
+
 
     private LocalDate date;
 
@@ -42,6 +50,15 @@ public class Transactions {
     public void setTransaction_id(Long transaction_id) {
         this.transaction_id = transaction_id;
     }
+
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
+    }
+
 
     public LocalDate getDate() {
         return this.date;
@@ -83,4 +100,13 @@ public class Transactions {
     public void setCategory(Categories category) {
         this.category = category;
     }
+    
+    public Accounts getAccount() {
+        return this.account;
+    }
+
+    public void setAccount(Accounts account) {
+        this.account = account; 
+    }
+
 }

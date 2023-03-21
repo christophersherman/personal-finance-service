@@ -2,9 +2,11 @@ package com.sherm.pfinance.controllers;
 
 import com.sherm.pfinance.models.Accounts;
 import com.sherm.pfinance.services.AccountsService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/accounts")
@@ -32,9 +34,20 @@ public class AccountsController {
     }
 
     @PutMapping("/{id}")
-    public Accounts updateAccount(@PathVariable Long id, @RequestBody Accounts account) {
-        account.setId(id);
-        return accountService.save(account);
+    public ResponseEntity<Accounts> updateAccount(@PathVariable Long id, @RequestBody Accounts accountDetails) {
+        Optional<Accounts> optionalAccount = Optional.ofNullable(accountService.findById(id));
+
+        if (optionalAccount.isPresent()) {
+            Accounts account = optionalAccount.get();
+            account.setName(accountDetails.getName());
+            account.setBalance(accountDetails.getBalance());
+            account.setCurrency(accountDetails.getCurrency());
+	    account.setUser(accountDetails.getUser());
+            Accounts updatedAccount = accountService.save(account);
+            return ResponseEntity.ok(updatedAccount);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @DeleteMapping("/{id}")

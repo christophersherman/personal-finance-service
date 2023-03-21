@@ -1,14 +1,6 @@
 package com.sherm.pfinance.models;
+import jakarta.persistence.*;
 import lombok.Data;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
 @Entity
 @Data
@@ -17,16 +9,17 @@ public class Accounts {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "account_id")
+    @Column(name = "accountId")
     private Long accountId;
 
-    @Column(name = "user_id")
-    private Long userId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private Users user;
 
     @Column(name = "name")
     private String name;
 
-    @Column(name = "account_type")
+    @Column(name = "accountType")
     @Enumerated(EnumType.STRING)
     private AccountType accountType;
 
@@ -45,12 +38,12 @@ public class Accounts {
         this.accountId = accountId;
     }
 
-    public Long getId() {
-        return userId;
+    public Users getUser() {
+        return user;
     }
 
-    public void setId(Long userId) {
-        this.userId = userId;
+    public void setUser(Users user) {
+        this.user = user;
     }
 
     public String getName() {
