@@ -4,8 +4,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Users {
     /*
     user_id (PK)
@@ -18,6 +21,7 @@ public class Users {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
     private Long user_id;
 
     private String username;

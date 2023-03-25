@@ -42,7 +42,7 @@ public class AccountsController {
             account.setName(accountDetails.getName());
             account.setBalance(accountDetails.getBalance());
             account.setCurrency(accountDetails.getCurrency());
-	    account.setUser(accountDetails.getUser());
+	    account.setUser_id(accountDetails.getUser_id());
             Accounts updatedAccount = accountService.save(account);
             return ResponseEntity.ok(updatedAccount);
         } else {

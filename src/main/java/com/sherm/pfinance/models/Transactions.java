@@ -2,8 +2,10 @@ package com.sherm.pfinance.models;
 import java.time.LocalDate;
 import jakarta.persistence.*;
 import com.sherm.pfinance.models.TransactionType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Transactions {
 
     /*

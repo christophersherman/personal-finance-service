@@ -1,7 +1,9 @@
 package com.sherm.pfinance.models;
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Categories {
     /*
     category_id (PK)
@@ -11,27 +13,21 @@ public class Categories {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer category_id;
+    private Long category_id;
 
     private String name;
 
     @Enumerated(EnumType.STRING)
     private TransactionType type;
 
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private Users user;
-    
-
-    public Integer getCategory_id() {
+    public Long getCategory_id() {
         return this.category_id;
     }
 
-    public void setCategory_id(Integer category_id) {
+    public void setCategory_id(Long category_id) {
         this.category_id = category_id;
     }
-
+    
     public String getName() {
         return this.name;
     }

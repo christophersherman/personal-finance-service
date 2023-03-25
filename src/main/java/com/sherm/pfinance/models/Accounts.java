@@ -1,10 +1,12 @@
 package com.sherm.pfinance.models;
 import jakarta.persistence.*;
 import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Data
 @Table(name = "accounts")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Accounts {
 
     @Id
@@ -12,9 +14,8 @@ public class Accounts {
     @Column(name = "accountId")
     private Long accountId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private Users user;
+    @Column(name = "user_id")
+    private Long user_id;
 
     @Column(name = "name")
     private String name;
@@ -38,12 +39,12 @@ public class Accounts {
         this.accountId = accountId;
     }
 
-    public Users getUser() {
-        return user;
+    public Long getUser_id() {
+        return this.user_id;
     }
 
-    public void setUser(Users user) {
-        this.user = user;
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
     }
 
     public String getName() {
