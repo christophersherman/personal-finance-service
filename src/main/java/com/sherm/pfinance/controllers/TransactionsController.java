@@ -34,7 +34,7 @@ public class TransactionsController {
     }
 
     @GetMapping("/{id}")
-    public Transactions getTransactionById(@PathVariable Long id) {
+    public Transactions getTransactionById(@PathVariable String id) {
         return transactionService.getTransactionById(id);
     }
 
@@ -62,7 +62,7 @@ public class TransactionsController {
     }
 
     @PutMapping("/{id}")
-    public Transactions updateTransaction(@PathVariable Long id, @RequestBody Transactions transaction) {
+    public Transactions updateTransaction(@PathVariable String id, @RequestBody Transactions transaction) {
         Transactions existingTransaction = transactionService.getTransactionById(id);
         if (existingTransaction != null) {
             transaction.setTransaction_id(id);
@@ -72,7 +72,7 @@ public class TransactionsController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteTransaction(@PathVariable Long id) {
+    public void deleteTransaction(@PathVariable String id) {
         transactionService.deleteTransaction(id);
     }
 }

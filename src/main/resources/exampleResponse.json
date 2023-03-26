@@ -1,0 +1,179 @@
+{
+	"data": [
+		{
+			"type": "transactions",
+			"id": "615f3a42-bf29-43fb-be6b-4ad3295e547e",
+			"attributes": {
+				"status": "SETTLED",
+				"rawText": null,
+				"description": "Transfer from Spending",
+				"message": "",
+				"isCategorizable": false,
+				"holdInfo": null,
+				"roundUp": null,
+				"cashback": null,
+				"amount": {
+					"currencyCode": "AUD",
+					"value": "10.00",
+					"valueInBaseUnits": 1000
+				},
+				"foreignAmount": null,
+				"cardPurchaseMethod": null,
+				"settledAt": "2023-03-26T12:53:02+11:00",
+				"createdAt": "2023-03-26T12:53:02+11:00"
+			},
+			"relationships": {
+				"account": {
+					"data": {
+						"type": "accounts",
+						"id": "463ca546-7e4b-4d8f-9995-5289141c7cd5"
+					},
+					"links": {
+						"related": "https://api.up.com.au/api/v1/accounts/463ca546-7e4b-4d8f-9995-5289141c7cd5"
+					}
+				},
+				"transferAccount": {
+					"data": {
+						"type": "accounts",
+						"id": "4f6adf82-568f-44e5-8705-2377e27cfe1a"
+					},
+					"links": {
+						"related": "https://api.up.com.au/api/v1/accounts/4f6adf82-568f-44e5-8705-2377e27cfe1a"
+					}
+				},
+				"category": {
+					"data": null
+				},
+				"parentCategory": {
+					"data": null
+				},
+				"tags": {
+					"data": [],
+					"links": {
+						"self": "https://api.up.com.au/api/v1/transactions/615f3a42-bf29-43fb-be6b-4ad3295e547e/relationships/tags"
+					}
+				}
+			},
+			"links": {
+				"self": "https://api.up.com.au/api/v1/transactions/615f3a42-bf29-43fb-be6b-4ad3295e547e"
+			}
+		},
+		{
+			"type": "transactions",
+			"id": "50750b7f-70c3-462a-a681-4152d8a17992",
+			"attributes": {
+				"status": "SETTLED",
+				"rawText": null,
+				"description": "Transfer to Savings",
+				"message": "",
+				"isCategorizable": false,
+				"holdInfo": null,
+				"roundUp": null,
+				"cashback": null,
+				"amount": {
+					"currencyCode": "AUD",
+					"value": "-10.00",
+					"valueInBaseUnits": -1000
+				},
+				"foreignAmount": null,
+				"cardPurchaseMethod": null,
+				"settledAt": "2023-03-26T12:53:01+11:00",
+				"createdAt": "2023-03-26T12:53:01+11:00"
+			},
+			"relationships": {
+				"account": {
+					"data": {
+						"type": "accounts",
+						"id": "4f6adf82-568f-44e5-8705-2377e27cfe1a"
+					},
+					"links": {
+						"related": "https://api.up.com.au/api/v1/accounts/4f6adf82-568f-44e5-8705-2377e27cfe1a"
+					}
+				},
+				"transferAccount": {
+					"data": {
+						"type": "accounts",
+						"id": "463ca546-7e4b-4d8f-9995-5289141c7cd5"
+					},
+					"links": {
+						"related": "https://api.up.com.au/api/v1/accounts/463ca546-7e4b-4d8f-9995-5289141c7cd5"
+					}
+				},
+				"category": {
+					"data": null
+				},
+				"parentCategory": {
+					"data": null
+				},
+				"tags": {
+					"data": [],
+					"links": {
+						"self": "https://api.up.com.au/api/v1/transactions/50750b7f-70c3-462a-a681-4152d8a17992/relationships/tags"
+					}
+				}
+			},
+			"links": {
+				"self": "https://api.up.com.au/api/v1/transactions/50750b7f-70c3-462a-a681-4152d8a17992"
+			}
+		},
+		{
+			"type": "transactions",
+			"id": "4056fd6a-d4e9-421a-b229-f62026ff3ad3",
+			"attributes": {
+				"status": "SETTLED",
+				"rawText": "Sherman C R",
+				"description": "Sherman C R",
+				"message": "",
+				"isCategorizable": true,
+				"holdInfo": null,
+				"roundUp": null,
+				"cashback": null,
+				"amount": {
+					"currencyCode": "AUD",
+					"value": "10.00",
+					"valueInBaseUnits": 1000
+				},
+				"foreignAmount": null,
+				"cardPurchaseMethod": null,
+				"settledAt": "2023-03-26T12:35:32+11:00",
+				"createdAt": "2023-03-26T12:35:32+11:00"
+			},
+			"relationships": {
+				"account": {
+					"data": {
+						"type": "accounts",
+						"id": "4f6adf82-568f-44e5-8705-2377e27cfe1a"
+					},
+					"links": {
+						"related": "https://api.up.com.au/api/v1/accounts/4f6adf82-568f-44e5-8705-2377e27cfe1a"
+					}
+				},
+				"transferAccount": {
+					"data": null
+				},
+				"category": {
+					"data": null,
+					"links": {
+						"self": "https://api.up.com.au/api/v1/transactions/4056fd6a-d4e9-421a-b229-f62026ff3ad3/relationships/category"
+					}
+				},
+				"parentCategory": {
+					"data": null
+				},
+				"tags": {
+					"data": [],
+					"links": {
+						"self": "https://api.up.com.au/api/v1/transactions/4056fd6a-d4e9-421a-b229-f62026ff3ad3/relationships/tags"
+					}
+				}
+			},
+			"links": {
+				"self": "https://api.up.com.au/api/v1/transactions/4056fd6a-d4e9-421a-b229-f62026ff3ad3"
+			}
+		}
+	],
+	"links": {
+		"prev": null,
+		"next": null
+	}
+}

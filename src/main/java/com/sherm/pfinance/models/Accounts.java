@@ -10,9 +10,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Accounts {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "accountId")
-    private Long accountId;
+    @Column(length = 100, name = "accountId")
+    private String accountId;
 
     @Column(name = "user_id")
     private Long user_id;
@@ -31,11 +30,11 @@ public class Accounts {
     @Enumerated(EnumType.STRING)
     private CurrencyType currency;
 
-    public Long getAccountId() {
+    public String getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(Long accountId) {
+    public void setAccountId(String accountId) {
         this.accountId = accountId;
     }
 

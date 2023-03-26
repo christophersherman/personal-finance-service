@@ -24,7 +24,7 @@ public class AccountsController {
     }
 
     @GetMapping("/{id}")
-    public Accounts getAccountById(@PathVariable Long id) {
+    public Accounts getAccountById(@PathVariable String id) {
         return accountService.findById(id);
     }
 
@@ -34,7 +34,7 @@ public class AccountsController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Accounts> updateAccount(@PathVariable Long id, @RequestBody Accounts accountDetails) {
+    public ResponseEntity<Accounts> updateAccount(@PathVariable String id, @RequestBody Accounts accountDetails) {
         Optional<Accounts> optionalAccount = Optional.ofNullable(accountService.findById(id));
 
         if (optionalAccount.isPresent()) {
@@ -51,7 +51,7 @@ public class AccountsController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteAccount(@PathVariable Long id) {
+    public void deleteAccount(@PathVariable String id) {
         accountService.deleteById(id);
     }
 }

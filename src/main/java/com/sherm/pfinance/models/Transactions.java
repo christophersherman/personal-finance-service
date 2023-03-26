@@ -20,8 +20,8 @@ public class Transactions {
      */
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long transaction_id;
+    @Column(length = 100) 
+    String transaction_id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
@@ -45,11 +45,11 @@ public class Transactions {
     private CurrencyType currency; 
 
 
-    public Long getTransaction_id() {
+    public String getTransaction_id() {
         return this.transaction_id;
     }
 
-    public void setTransaction_id(Long transaction_id) {
+    public void setTransaction_id(String transaction_id) {
         this.transaction_id = transaction_id;
     }
 

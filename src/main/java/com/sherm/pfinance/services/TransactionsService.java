@@ -17,7 +17,7 @@ public class TransactionsService {
         return transactionRepository.findAll();
     }
 
-    public Transactions getTransactionById(Long id) {
+    public Transactions getTransactionById(String id) {
         return transactionRepository.findById(id).orElse(null);
     }
 
@@ -25,7 +25,7 @@ public class TransactionsService {
         return transactionRepository.save(transaction);
     }
 
-    public void deleteTransaction(Long id) {
+    public void deleteTransaction(String id) {
         transactionRepository.deleteById(id);
     }
 }
