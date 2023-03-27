@@ -9,15 +9,19 @@ import com.sherm.pfinance.models.CurrencyType;
 import java.util.ArrayList;
 import java.util.List;
 import com.sherm.pfinance.services.AccountsService;
+import com.sherm.pfinance.services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import java.net.URLEncoder; 
 import java.nio.charset.StandardCharsets;
-
+import java.time.LocalDateTime;
 @Service
 public class TransactionFetchService {
     @Autowired
     private AccountsService accountsService;
+    
+    @Autowired
+    private UsersService usersService;
 
     private TransactionsService transactionsService;
 
@@ -28,13 +32,22 @@ public class TransactionFetchService {
     //@Scheduled(cron = "0 0 0 * * ?")    
     @Scheduled(cron = "0 * * * * ?") 
     public void fetchAndSaveTransactions() {
-        List<Transactions> lastDaysTransactions = fetchExternalTransactions();
+        List<Transactions> lastDaysTransactions = fetchUpBankTransactions();
         for (Transactions t : lastDaysTransactions) {
+            // revisit how to do this... getTransactionbyId has a .orElse null return. probs should build a exists function
+            if(transactionsService.getTransactionById(t.getTransaction_id()) != null) {
+                System.out.println("Transaction already exists"); 
+                continue;
+            }
+            
             transactionsService.saveTransaction(t);                       
         }
     }
 
-    public List<Transactions> fetchExternalTransactions() {
+    public List<Transactions> fetchUpBankTransactions() {
+        //this whole function is absolutely vomit-worthy please god fix this 
+        //things to consider - how to assign user?
+        System.out.println("test"); 
         String api_url = "https://api.up.com.au/api/v1/transactions?filter[since]=";
         api_url = api_url + getUpBankTimeISO();
         String bearer_token = System.getenv("UP_BANK_API"); 
@@ -64,6 +77,8 @@ public class TransactionFetchService {
                     continue;
                 }
                 transaction.setCurrency(currType);
+                transaction.setUser(usersService.findById(1L)); 
+                transaction.setDate(LocalDateTime.parse(transactionNode.get("attributes").get("settledAt").asText(), DateTimeFormatter.ISO_OFFSET_DATE_TIME));
                 transactionList.add(transaction);
             }
         return transactionList;

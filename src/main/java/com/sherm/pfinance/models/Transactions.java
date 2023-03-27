@@ -1,5 +1,5 @@
 package com.sherm.pfinance.models;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import jakarta.persistence.*;
 import com.sherm.pfinance.models.TransactionType;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -36,7 +36,7 @@ public class Transactions {
     private Accounts account;
 
 
-    private LocalDate date;
+    private LocalDateTime date;
 
     private String description;
     private Double amount;
@@ -62,11 +62,11 @@ public class Transactions {
     }
 
 
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return this.date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
