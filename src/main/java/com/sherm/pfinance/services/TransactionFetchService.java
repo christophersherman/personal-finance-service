@@ -29,8 +29,8 @@ public class TransactionFetchService {
         this.transactionsService = transactionsService;
     }
 
-    //@Scheduled(cron = "0 0 0 * * ?")    
-    @Scheduled(cron = "0 * * * * ?") 
+    @Scheduled(cron = "0 0 0 * * ?")    
+    //@Scheduled(cron = "0 * * * * ?") 
     public void fetchAndSaveTransactions() {
         List<Transactions> lastDaysTransactions = fetchUpBankTransactions();
         for (Transactions t : lastDaysTransactions) {
@@ -47,7 +47,6 @@ public class TransactionFetchService {
     public List<Transactions> fetchUpBankTransactions() {
         //this whole function is absolutely vomit-worthy please god fix this 
         //things to consider - how to assign user?
-        System.out.println("test"); 
         String api_url = "https://api.up.com.au/api/v1/transactions?filter[since]=";
         api_url = api_url + getUpBankTimeISO();
         String bearer_token = System.getenv("UP_BANK_API"); 

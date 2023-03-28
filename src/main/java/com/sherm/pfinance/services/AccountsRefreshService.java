@@ -29,9 +29,9 @@ public class AccountsRefreshService {
         this.accountsService = accountsService;
     }
     
-    @Scheduled(cron = "0 * * * * ?")
+    @Scheduled(cron = "0 0 0 * * ?")    
+    //@Scheduled(cron = "0 * * * * ?")
     public void refreshAccounts() {
-        System.out.println("refresh accounts");
         String api_url = "https://api.up.com.au/api/v1/accounts";
         String bearer_token = System.getenv("UP_BANK_API");
         JsonNode jsonResponse = HttpUtils.sendGetRequestWithBearerToken(api_url, bearer_token);       

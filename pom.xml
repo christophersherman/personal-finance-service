@@ -61,7 +61,8 @@
 	</dependencies>
 
 	<build>
-		<plugins>
+        <finalName>pfinance-application-service</finalName> 
+        <plugins>
 			<plugin>
 				<groupId>org.asciidoctor</groupId>
 				<artifactId>asciidoctor-maven-plugin</artifactId>
