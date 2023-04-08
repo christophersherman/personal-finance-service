@@ -27,7 +27,7 @@ public class TransactionFetchService {
     this.transactionsService = transactionsService;
   }
 
-  @Scheduled(cron = "0 0 0 * * ?")
+  @Scheduled(cron = "20 15 * * *")
   //@Scheduled(cron = "0 * * * * ?")
   public void fetchAndSaveTransactions() {
     List<Transactions> lastDaysTransactions = fetchUpBankTransactions();
